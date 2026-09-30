@@ -1,0 +1,9 @@
+node_modules
+dist
+.venv
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+analysis_validation_report.json
