@@ -17,4 +17,4 @@ The Vite dev server proxies `/api` to the local FastAPI service.
 ## Production deployment
 
 The frontend builds with `npm run build` and deploys to Cloudflare Pages from `dist/`.
-The Python API is a separate service and must be hosted separately for uploaded-file profiling to work in production; the Pages static deployment does not execute the local FastAPI process.
+The production API is deployed as a Cloudflare Python Worker from `cloudflare-api/`; local development continues to use the FastAPI process and Vite proxy.

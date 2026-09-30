@@ -7,3 +7,5 @@ dist
 !.env.example
 __pycache__/
 analysis_validation_report.json
+python_modules/
+.venv-workers/

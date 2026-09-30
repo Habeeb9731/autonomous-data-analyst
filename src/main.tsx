@@ -24,6 +24,7 @@ const countryData: Array<{ name: string; value: number; color: string }> = []
 const issues: Array<[string, string, string, string, string, string]> = []
 const columns: ExplorerColumn[] = []
 const emptyColumn: ExplorerColumn = { name: 'No column selected', type: 'Upload a dataset', missing: '—', unique: '—', mean: '—', median: '—', color: '#a3a3a3' }
+const API_BASE = import.meta.env.VITE_API_BASE_URL ?? (import.meta.env.DEV ? '' : 'https://autonomous-data-analyst-api.abdulhabeeb9731.workers.dev')
 
 function App() {
   const [section, setSection] = useState<Section>('Overview')
@@ -41,7 +42,7 @@ function App() {
     const body = new FormData()
     body.append('file', file)
     try {
-      const response = await fetch('/api/profile', { method: 'POST', body })
+      const response = await fetch(`${API_BASE}/api/profile`, { method: 'POST', body })
       if (!response.ok) throw new Error(await response.text())
       setProfile(await response.json() as Profile)
       setSection('Overview')
@@ -54,7 +55,7 @@ function App() {
   const handleDemo = async () => {
     setUploading(true)
     try {
-      const response = await fetch('/api/demo', { method: 'POST' })
+      const response = await fetch(`${API_BASE}/api/demo`, { method: 'POST' })
       if (!response.ok) throw new Error(await response.text())
       setProfile(await response.json() as Profile)
       setSection('Overview')
